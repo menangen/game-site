@@ -1,23 +1,24 @@
 "use strict";
 
-import controller from './controllers/index';
+import controller from 'controllers/controller';
 
-const $applicationMeta = document.querySelectorAll("meta[name=application-name]")[0];
+document.addEventListener('DOMContentLoaded', () => {
+    const $applicationMeta = document.querySelectorAll("meta[name=application-name]")[0];
 
- if (typeof $applicationMeta !== 'undefined') {
+    if (typeof $applicationMeta !== 'undefined') {
 
-     const moduleName = $applicationMeta.content;
-     console.log(`Loaded ${ moduleName } module`);
+        const moduleName = $applicationMeta.content;
+        console.info(`Loaded ${ moduleName } module`);
 
-     switch (moduleName) {
+        switch (moduleName) {
 
-        case "index":
-            console.log("index controller");
-            controller();
-            break;
-     }
+            case "index":
+                controller();
+                break;
+        }
 
- }
- else {
-     console.log("Bad application module");
- }
+    }
+    else {
+        console.warn("Bad application module");
+    }
+});

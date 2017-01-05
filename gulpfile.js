@@ -70,9 +70,11 @@ gulp.task('less', function() {
     // less styles from src/less folder
     // only one root file need compile
     gulp.src(config.srcLocation +'/less/main.less')
+        .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(config.production ? cssmin() : util.noop())
         .pipe(rename({suffix: '.min'}))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.distLocation +'/css'));
 });
 

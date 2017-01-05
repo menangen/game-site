@@ -1,15 +1,15 @@
 "use strict";
 import Vue from 'vue';
-import { handler } from "handlers/index";
+import handler from 'handlers/handler';
 
 export default function () {
 
-    let data = { a: 1 };
+    let data = { messageVue: 1 };
 
     const vm = new Vue({
+        el: '#app',
         data: data
     });
 
-    handler(1, 2);
-    console.log("App working now")
+    handler();
 }

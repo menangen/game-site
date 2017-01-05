@@ -3,7 +3,27 @@ html
     head
         include meta
         title= title
-        script(src="js/all.js")
+
     body
-        h1= message
-        h3 This is Pug + Express js app
+        .container
+            .row
+                h1= message
+                h3 This is Pug + Express js app
+            .row
+                .col-md-4(style="background-color: #addcff")
+                    div#app Vue.js template: {{ messageVue }}
+            .row
+                .col-md-2(style="background-color: #55dc44")
+                    .row
+                        .col-md-4
+                            .row
+                                .col-md-2(style="background-color: #00dc44")
+                                    span text-1-1
+                                .col-md-2(style="background-color: #ee61a9")
+                                    span text-1-2
+                .col-md-2(style="background-color: #2070CC")
+                    span text2
+
+
+        include styles
+        include scripts
