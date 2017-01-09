@@ -3,11 +3,11 @@
 import controller from 'controllers/controller';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const $applicationMeta = document.querySelectorAll("meta[name=application-name]")[0];
+    const $applicationMeta = document.querySelector("meta[name=application-name]");
 
-    if (typeof $applicationMeta !== 'undefined') {
+    if (typeof $applicationMeta !== 'undefined' && "content" in $applicationMeta) {
 
-        const moduleName = $applicationMeta.content;
+        const moduleName = $applicationMeta.content || "NONAME";
         console.info(`Loaded ${ moduleName } module`);
 
         switch (moduleName) {

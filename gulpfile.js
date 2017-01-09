@@ -23,25 +23,14 @@ var config = {
     production: !!util.env.production,
 
     distLocation: "browser/dist",
-    distLocationModifier: function (currentValue) {
-        return config.distLocation + currentValue
-    },
     srcLocation: "browser/src",
-    srcLocationModifier: function (currentValue) {
-        return "browser/src" + currentValue
-    },
 
     includePathOptions: {
         include: {
             'vue': 'node_modules/vue/dist/vue.js'
         },
         paths: ['browser/src/javascript-es6']
-    },
-
-    bundleFiles: [
-        "/css/main.min.css",
-        "/js/all.js"
-    ]
+    }
 };
 
 gulp.task("default", ["less", "javascript"]);
