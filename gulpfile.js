@@ -17,6 +17,7 @@ var buble = require("rollup-plugin-buble");
 var includePaths = require("rollup-plugin-includepaths");
 var nodeResolve = require("rollup-plugin-node-resolve");
 var commonjs = require("rollup-plugin-commonjs");
+var vue = require("rollup-plugin-vue2");
 
 var config = {
     bundleName: "gameSite",
@@ -35,7 +36,7 @@ var config = {
         include: {
             'vue': 'node_modules/vue/dist/vue.js'
         },
-        paths: ['browser/src/javascript-es6']
+        paths: ['browser/src/', 'browser/src/javascript-es6']
     },
 
     bundleFiles: [
@@ -55,6 +56,7 @@ gulp.task('javascript', function() {
             entry: config.srcLocation +'/javascript-es6/main.js',
             moduleName: config.bundleName,
             plugins: [
+                vue(),
                 buble(),
                 includePaths(config.includePathOptions),
                 nodeResolve({ browser: true, jsnext: true, main: true }),

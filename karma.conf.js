@@ -1,4 +1,5 @@
-const buble = require("rollup-plugin-buble"),
+const vue = require("rollup-plugin-vue2"),
+    buble = require("rollup-plugin-buble"),
     includePaths = require("rollup-plugin-includepaths"),
     nodeResolve = require("rollup-plugin-node-resolve"),
     commonjs = require("rollup-plugin-commonjs");
@@ -14,6 +15,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser like: 'browser/src/javascript-es6'
     files: [
       'browser/src/tests/global.spec.js',
+      {pattern: 'browser/src/components/*.vue', included: false, served: false, watched: true},
     ],
     // list of files to exclude
     exclude: [
@@ -29,8 +31,10 @@ module.exports = function(config) {
             includePaths({
                 include: {
                     'vue': 'node_modules/vue/dist/vue.runtime.js'
-                }
+                },
+                paths: ['browser/src/']
             }),
+            vue(),
             buble(),
             nodeResolve({ browser: true, jsnext: true, main: true }),
             commonjs()
@@ -51,13 +55,13 @@ module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity

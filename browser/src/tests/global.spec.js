@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import vueTemplate from 'components/hello.vue'
 
 describe('Users factory', function() {
 
@@ -7,13 +8,10 @@ describe('Users factory', function() {
 
         const vm = new Vue({
             el: document.createElement('div'),
-            render: (createElement) => createElement(
-                "span",
-                "Test"
-            )
+            render: (createElement) => createElement(vueTemplate)
         });
 
-        expect(vm.$el.textContent).toBe("Test")
+        expect(vm.$el.querySelector('h1').textContent).toBe('Welcome to Your Vue.js App')
 
     });
 });
