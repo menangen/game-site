@@ -22,27 +22,15 @@ var vue = require("rollup-plugin-vue2");
 var config = {
     bundleName: "gameSite",
     production: !!util.env.production,
-
     distLocation: "browser/dist",
-    distLocationModifier: function (currentValue) {
-        return config.distLocation + currentValue
-    },
     srcLocation: "browser/src",
-    srcLocationModifier: function (currentValue) {
-        return "browser/src" + currentValue
-    },
 
     includePathOptions: {
         include: {
-            'vue': 'node_modules/vue/dist/vue.js'
+            'vue': 'node_modules/vue/dist/vue.runtime.js'
         },
         paths: ['browser/src/', 'browser/src/javascript-es6']
-    },
-
-    bundleFiles: [
-        "/css/main.min.css",
-        "/js/all.js"
-    ]
+    }
 };
 
 gulp.task("default", ["less", "javascript"]);

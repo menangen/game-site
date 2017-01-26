@@ -1,17 +1,16 @@
 import Vue from 'vue'
-import vueTemplate from 'components/hello.vue'
 
-describe('Users factory', function() {
+import helloComponent from 'components/hello.vue'
 
-    it('has a dummy Vue.js test', function() {
+describe('Vue components', function() {
 
+    it('has a dummy Vue.js test', () => {
 
         const vm = new Vue({
             el: document.createElement('div'),
-            render: (createElement) => createElement(vueTemplate)
+            render: (createElement) => createElement(helloComponent)
         });
 
-        expect(vm.$el.querySelector('h1').textContent).toBe('Welcome to Your Vue.js App')
-
+        expect(vm.$el.textContent).toBe('Welcome to Your Vue.js App')
     });
 });
