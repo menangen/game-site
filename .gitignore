@@ -1,4 +1,5 @@
 .gitignore
 .idea/
+.cache/
 node_modules/
 browser/dist
